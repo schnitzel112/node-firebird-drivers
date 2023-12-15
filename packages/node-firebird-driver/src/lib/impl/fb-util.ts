@@ -310,7 +310,7 @@ export function createDataReader(descriptors: Descriptor[]): DataReader {
 				case sqlTypes.SQL_VARYING: {
 					//// TODO: none, octets
 					const varLength = dataView.getUint16(descriptor.offset, littleEndian);
-					const decoder = new stringDecoder.StringDecoder('utf8');
+					const decoder = new stringDecoder.StringDecoder('latin1');
 					const buf = Buffer.from(buffer.buffer, descriptor.offset + 2, varLength);
 					return decoder.end(buf);
 				}
